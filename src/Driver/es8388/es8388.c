@@ -78,7 +78,7 @@ error_t es8388_read_reg(uint8_t reg_add, uint8_t *p_data)
  */
 static int es8388_set_adc_dac_volume(int mode, int volume, int dot)
 {
-    AD_LOGD("es8388_set_adc_dac_volume: %d.%d", volume,dot);
+    AD_LOGI("es8388_set_adc_dac_volume: %d.%d", volume,dot);
     int res = 0;
     if ( volume < -96 || volume > 0 ) {
         AD_LOGW("Warning: volume < -96! or > 0!");
@@ -350,7 +350,7 @@ error_t es8388_config_fmt(codec_mode_t mode, i2s_format_t fmt)
 #if AI_THINKER_ES8388_VOLUME_HACK==1
 
 error_t es8388_set_voice_volume(int volume) {
-  AD_LOGD("es8388_set_voice_volume (HACK 1): %d", volume);
+  AD_LOGI("es8388_set_voice_volume (HACK 1): %d", volume);
   error_t res = RESULT_OK;
   if (volume < 0) volume = 0;
   else if (volume > 100) volume = 100;
@@ -369,7 +369,7 @@ error_t es8388_set_voice_volume(int volume) {
 #elif AI_THINKER_ES8388_VOLUME_HACK==2
 
 error_t es8388_set_voice_volume(int volume) {
-    AD_LOGD("es8388_set_voice_volume (HACK 2): %d", volume);
+    AD_LOGI("es8388_set_voice_volume (HACK 2): %d", volume);
     error_t res = RESULT_OK;
     if (volume < 0) volume = 0;
     else if (volume > 100) volume = 100;
@@ -389,7 +389,7 @@ error_t es8388_set_voice_volume(int volume) {
 #else
 
 error_t es8388_set_voice_volume(int volume) {
-    AD_LOGD("es8388_set_voice_volume: %d", volume);
+    AD_LOGI("es8388_set_voice_volume: %d", volume);
     error_t res = RESULT_OK;
     if (volume < 0)
         volume = 0;
@@ -535,7 +535,7 @@ error_t es8388_config_input_device(es_input_device_t input)
  */
 error_t es8388_set_mic_gain(es_mic_gain_t gain)
 {
-    AD_LOGD("es8388_set_mic_gain: %d", gain);
+    AD_LOGI("es8388_set_mic_gain: %d", gain);
     error_t res, gain_n;
     gain_n = (int)gain / 3;
     gain_n = (gain_n << 4) + gain_n;
@@ -545,7 +545,7 @@ error_t es8388_set_mic_gain(es_mic_gain_t gain)
 
 int es8388_ctrl_state_active(codec_mode_t mode, bool ctrl_state_active)
 {
-    AD_LOGD("es8388_ctrl_state_active: %d, %d", mode, ctrl_state_active);
+    AD_LOGI("es8388_ctrl_state_active: %d, %d", mode, ctrl_state_active);
     int res = 0;
     int es_mode_t = 0;
     switch (mode) {
